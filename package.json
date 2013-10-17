@@ -1,0 +1,19 @@
+{
+  "name": "passport-shopify",
+  "version": "0.0.0",
+  "description": "Shopify authentication strategy for passport",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "passport",
+    "shopify",
+    "auth",
+    "authentication",
+    "identity",
+    "authn"
+  ],
+  "author": "Daniel Abakah",
+  "license": "BSD"
+}
