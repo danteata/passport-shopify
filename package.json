@@ -2,9 +2,23 @@
   "name": "passport-shopify",
   "version": "0.0.0",
   "description": "Shopify authentication strategy for passport",
-  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/danteata/passport-shopify.git"
+  },
+  "bugs": {
+    "url": "http://github.com/danteata/passport-shopify/issues"
+  },
+  "main": "./lib/passport-shopify",
+  "dependencies": {
+    "pkginfo": "0.2.x",
+    "passport-oauth": "0.1.x"
+  },
+  "devDependencies": {
+    "vows": "0.6.x"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_PATH=lib node_modules/.bin/vows test/*-test.js"
   },
   "keywords": [
     "passport",

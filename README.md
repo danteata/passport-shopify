@@ -22,9 +22,9 @@ and OAuth 2.0 tokens.  The strategy requires a `verify` callback, which accepts
 these credentials and calls `done` providing a user, as well as `options`
 specifying a client ID, client secret, and callback URL.
 
-    passport.use(new GitHubStrategy({
-        clientID: GITHUB_CLIENT_ID,
-        clientSecret: GITHUB_CLIENT_SECRET,
+    passport.use(new ShopifyStrategy({
+        clientID: SHOPIFY_CLIENT_ID,
+        clientSecret: SHOPIFY_CLIENT_SECRET,
         callbackURL: "http://127.0.0.1:3000/auth/shopify/callback"
       },
       function(accessToken, refreshToken, profile, done) {
@@ -54,21 +54,21 @@ application:
 
 ## Examples
 
-For a complete, working example, refer to the [login example](https://shopify.com/jaredhanson/passport-shopify/tree/master/examples/login).
+For a complete, working example, refer to the [login example](https://github.com/danteata/passport-shopify/tree/master/examples/login).
 
 ## Tests
 
     $ npm install --dev
     $ make test
 
-[![Build Status](https://secure.travis-ci.org/jaredhanson/passport-shopify.png)](http://travis-ci.org/jaredhanson/passport-shopify)
+[![Build Status](https://secure.travis-ci.org/danteata/passport-shopify.png)](http://travis-ci.org/danteata/passport-shopify)
 
 ## Credits
 
-  - [Jared Hanson](http://shopify.com/jaredhanson)
+  - [Dantheta](http://github.com/danteata)
 
 ## License
 
 [The MIT License](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2011-2013 Jared Hanson <[http://jaredhanson.net/](http://jaredhanson.net/)>
+Copyright (c) 2011-2013 Dantheta
