@@ -43,7 +43,11 @@ For example, as route middleware in an [Express](http://expressjs.com/)
 application:
 
     app.get('/auth/shopify',
-      passport.authenticate('shopify'));
+      passport.authenticate('shopify', {
+        scope: 'read_products',
+        scope: 'read_products',
+        shop: 'storename',
+        }));
 
     app.get('/auth/shopify/callback', 
       passport.authenticate('shopify', { failureRedirect: '/login' }),

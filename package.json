@@ -12,7 +12,7 @@
   "main": "./lib/passport-shopify",
   "dependencies": {
     "pkginfo": "0.2.x",
-    "passport-oauth": "0.1.x"
+    "passport-oauth": "git://github.com/danteata/passport-oauth.git"
   },
   "devDependencies": {
     "vows": "0.6.x"
