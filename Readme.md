@@ -1,4 +1,4 @@
-# Passport-Shopify [![NPM version](https://badge.fury.io/js/express-cdn.png)](http://badge.fury.io/js/passport-shopify)
+# Passport-Shopify [![NPM version](https://badge.fury.io/js/passport-shopify.png)](http://badge.fury.io/js/passport-shopify)
 
 [Passport](http://passportjs.org/) strategy for authenticating with
 [Shopify](https://shopify.com/) using the OAuth 2.0 API.
