@@ -1,6 +1,6 @@
 {
   "name": "passport-shopify",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Shopify authentication strategy for passport",
   "repository": {
     "type": "git",
@@ -12,10 +12,13 @@
   "main": "./lib/passport-shopify",
   "dependencies": {
     "pkginfo": "0.2.x",
-    "passport-oauth": "git://github.com/danteata/passport-oauth.git"
+    "passport-oauth": "git://github.com/danteata/passport-oauth.git",
+    "underscore": "*"
   },
   "devDependencies": {
-    "vows": "0.6.x"
+    "vows": "0.6.x",
+    "express": "*",
+    "passport": "*"
   },
   "scripts": {
     "test": "NODE_PATH=lib node_modules/.bin/vows test/*-test.js"
@@ -29,5 +32,11 @@
     "authn"
   ],
   "author": "Daniel Abakah",
-  "license": "BSD"
+  "contributors": [
+    {
+      "name": "Nick Baugh",
+      "email": "niftylettuce@gmail.com"
+    }
+  ],
+  "license": "MIT"
 }

@@ -5,11 +5,11 @@ var shopify = require('passport-shopify');
 
 
 vows.describe('passport-shopify').addBatch({
-  
+
   'module': {
     'should report a version': function (x) {
       assert.isString(shopify.version);
     },
   },
-  
+
 }).export(module);
