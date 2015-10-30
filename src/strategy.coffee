@@ -6,6 +6,7 @@ OAuth2Strategy = require('passport-oauth').OAuth2Strategy
 InternalOAuthError = require('passport-oauth').InternalOAuthError
 _ = require('lodash')
 
+
 ###
 # Inherit from `OAuth2Strategy`.
 ###
