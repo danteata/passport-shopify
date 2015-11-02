@@ -17,15 +17,15 @@ class Strategy extends OAuth2Strategy
     if not options.shop?
       options.shop = 'example'
 
+    shopName = @normalizeShopName options.shop
 
     _.defaults options,
-      authorizationURL: "https://#{options.shop}.myshopify.com/admin/oauth/authorize"
-      tokenURL: "https://#{options.shop}.myshopify.com/admin/oauth/access_token"
-      profileURL: "https://#{options.shop}.myshopify.com/admin/shop.json"
+      authorizationURL: "https://#{shopName}/admin/oauth/authorize"
+      tokenURL: "https://#{shopName}/admin/oauth/access_token"
+      profileURL: "https://#{shopName}/admin/shop.json"
       userAgent: 'passport-shopify'
       customHeaders: {}
       scopeSeparator: ','
-
 
     _.defaults options.customHeaders,
       'User-Agent': options.userAgent
@@ -67,12 +67,26 @@ class Strategy extends OAuth2Strategy
 
   authenticate: (req, options) ->
 
-    _.defaults options,
-      authorizationURL: "https://" + options.shop + ".myshopify.com/admin/oauth/authorize",
-      tokenURL: "https://" + options.shop + ".myshopify.com/admin/oauth/access_token",
-      profileURL: "https://" + options.shop + ".myshopify.com/admin/shop.json",
+    # If shop is defined
+    # with authentication
+    if options.shop?
 
+      shopName = @normalizeShopName options.shop
+
+      _.defaults options,
+        authorizationURL: "https://#{shopName}/admin/oauth/authorize",
+        tokenURL: "https://#{shopName}/admin/oauth/access_token",
+        profileURL: "https://#{shopName}/admin/shop.json",
+
+    # Call superclass
     super(req, options)
+
+  normalizeShopName: (shop) ->
+
+    if shop.match /^[a-z0-9-_]+$/i
+      "#{shop}.myshopify.com"
+    else
+      shop
 
 
 
