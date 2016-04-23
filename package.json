@@ -11,12 +11,12 @@
   },
   "main": "./lib/passport-shopify",
   "dependencies": {
-    "pkginfo": "0.2.x",
+    "lodash": "^3.10.1",
     "passport-oauth": "git://github.com/danteata/passport-oauth.git",
-    "underscore": "*"
+    "pkginfo": "0.3.x"
   },
   "devDependencies": {
-    "vows": "0.6.x",
+    "vows": "0.8.x",
     "express": "*",
     "passport": "*"
   },
@@ -36,6 +36,10 @@
     {
       "name": "Nick Baugh",
       "email": "niftylettuce@gmail.com"
+    },
+    {
+      "name": "Igor Goltsov",
+      "email": "riversy@gmail.com"
     }
   ],
   "license": "MIT"
