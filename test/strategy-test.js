@@ -79,8 +79,8 @@ vows.describe('ShopifyStrategy').addBatch({
 
       // mock
       strategy._oauth2.get = function(url, accessToken, callback) {
-        if (url == 'https://api.shopify.com/user') {
-          var body = '{ "login": "octocat", "id": 1, "name": "monalisa octocat", "email": "octocat@shopify.com", "html_url": "https://shopify.com/octocat" }';
+        if (url == 'https://example.myshopify.com/admin/shop.json') {
+          var body = '{ "shop": { "name": "octocat", "id": 1, "shop_owner": "monalisa octocat", "email": "octocat@shopify.com", "domain": "https://shopify.com/octocat" } }';
           callback(null, body, undefined);
         } else {
           callback(new Error('Incorrect user profile URL'));
@@ -128,14 +128,14 @@ vows.describe('ShopifyStrategy').addBatch({
       var strategy = new ShopifyStrategy({
         clientID: 'ABC123',
         clientSecret: 'secret',
-        userProfileURL: 'https://shopify.corpDomain/api/v3/user',
+        profileURL: 'https://shopify.corpDomain/api/v3/user',
       },
       function() {});
 
       // mock
       strategy._oauth2.get = function(url, accessToken, callback) {
         if (url == 'https://shopify.corpDomain/api/v3/user') {
-          var body = '{ "login": "octocat", "id": 1, "name": "monalisa octocat", "email": "octocat@shopify.com", "html_url": "https://shopify.com/octocat" }';
+          var body = '{ "shop": { "name": "octocat", "id": 1, "shop_owner": "monalisa octocat", "email": "octocat@shopify.com", "domain": "https://shopify.com/octocat" } }';
           callback(null, body, undefined);
         } else {
           callback(new Error('Incorrect user profile URL'));
