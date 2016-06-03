@@ -84,16 +84,18 @@ For a complete, working example, refer to the [example](https://github.com/dante
 
 ```js
 npm install -d
-make test
+npm run test
 ```
 
 ## Contributors
 
 * [Dantheta](http://github.com/danteata)
 * [Nick Baugh](https://github.com/niftylettuce)
+* [Igor Goltsov](https://github.com/riversy)
+* [Sebastian Iacomuzzi](https://github.com/siacomuzzi)
 
 ## License
 
 [The MIT License](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2011- Dantheta and Nick Baugh
+Copyright (c) 2011-2016 Dantheta and Nick Baugh

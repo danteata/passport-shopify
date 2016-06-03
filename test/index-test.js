@@ -1,15 +1,10 @@
-var vows = require('vows');
-var assert = require('assert');
-var util = require('util');
-var shopify = require('passport-shopify');
+import shopify from '../src';
+import { expect } from 'chai';
 
-
-vows.describe('passport-shopify').addBatch({
-
-  'module': {
-    'should report a version': function (x) {
-      assert.isString(shopify.version);
-    },
-  },
-
-}).export(module);
+describe('passport-shopify', () => {
+  describe('module', () => {
+    it('should report a version', () => {
+      expect(shopify.version).to.be.a.String;
+    });
+  });
+});
