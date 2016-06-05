@@ -1,19 +1,22 @@
-import util from 'util';
-import { expect } from 'chai';
 import ShopifyStrategy from '../src';
-import assert from 'assert';
 import nock from 'nock';
-import { InternalOAuthError } from 'passport-oauth2';
+import {
+  InternalOAuthError,
+}
+from 'passport-oauth2';
+import chai from 'chai';
+import dirtyChai from 'dirty-chai';
+const expect = chai.expect;
+chai.use(dirtyChai);
 
-let count = 0;
 describe('ShopifyStrategy', () => {
   describe('strategy', () => {
     let strategy;
     beforeEach(() => {
       strategy = new ShopifyStrategy({
-          clientID: 'ABC123',
-          clientSecret: 'secret',
-        }, () => {});
+        clientID: 'ABC123',
+        clientSecret: 'secret',
+      }, () => {});
     });
 
     it('should be named shopify', () => {
@@ -30,10 +33,10 @@ describe('ShopifyStrategy', () => {
     let strategy;
     beforeEach(() => {
       strategy = new ShopifyStrategy({
-          clientID: 'ABC123',
-          clientSecret: 'secret',
-          userAgent: 'example.com',
-        }, () => {});
+        clientID: 'ABC123',
+        clientSecret: 'secret',
+        userAgent: 'example.com',
+      }, () => {});
     });
 
     it('should have correct user agent', () => {
@@ -46,10 +49,12 @@ describe('ShopifyStrategy', () => {
     let strategy;
     beforeEach(() => {
       strategy = new ShopifyStrategy({
-          clientID: 'ABC123',
-          clientSecret: 'secret',
-          customHeaders: { 'User-Agent': 'example2.com' },
-        }, () => {});
+        clientID: 'ABC123',
+        clientSecret: 'secret',
+        customHeaders: {
+          'User-Agent': 'example2.com',
+        },
+      }, () => {});
     });
 
     it('should have correct user agent', () => {
@@ -58,33 +63,36 @@ describe('ShopifyStrategy', () => {
     });
   });
 
-  describe('strategy with user agent option in custom headers and explicit option', () => {
-    let strategy;
-    beforeEach(() => {
-      strategy = new ShopifyStrategy({
+  describe(
+    'strategy with user agent option in custom headers and explicit option', () => {
+      let strategy;
+      beforeEach(() => {
+        strategy = new ShopifyStrategy({
           clientID: 'ABC123',
           clientSecret: 'secret',
-          customHeaders: { 'User-Agent': 'example2.com' },
+          customHeaders: {
+            'User-Agent': 'example2.com',
+          },
           userAgent: 'example3.com',
         }, () => {});
-    });
+      });
 
-    it('should prefer custom headers', () => {
-      expect(strategy._oauth2._customHeaders['User-Agent']).to
-        .equal('example2.com');
+      it('should prefer custom headers', () => {
+        expect(strategy._oauth2._customHeaders['User-Agent']).to
+          .equal('example2.com');
+      });
     });
-  });
 
   describe('strategy when loading user profile', () => {
-
     let strategy;
     beforeEach((done) => {
       strategy = new ShopifyStrategy({
-          clientID: 'ABC123',
-          clientSecret: 'secret',
-        }, () => {});
+        clientID: 'ABC123',
+        clientSecret: 'secret',
+      }, () => {});
 
-      let body = `{ "shop": { "name": "octocat", "id": 1,
+      const body =
+        `{ "shop": { "name": "octocat", "id": 1,
         "shop_owner": "monalisa octocat", "email": "octocat@shopify.com",
         "domain": "https://shopify.com/octocat" } }`;
       nock('https://example.myshopify.com')
@@ -101,8 +109,8 @@ describe('ShopifyStrategy', () => {
 
     describe('when told to load user profile', () => {
       it('should not throw an error', (done) => {
-        strategy.userProfile('access-token', (err, profile) => {
-          expect(err).to.be.null;
+        strategy.userProfile('access-token', (err) => {
+          expect(err).to.be.null();
           done();
         });
       });
@@ -112,9 +120,11 @@ describe('ShopifyStrategy', () => {
           expect(profile.provider).to.equal('shopify');
           expect(profile.id).to.equal(1);
           expect(profile.username).to.equal('octocat');
-          expect(profile.displayName).to.equal('monalisa octocat');
+          expect(profile.displayName).to.equal(
+            'monalisa octocat');
           expect(profile.emails).to.have.lengthOf(1);
-          expect(profile.profileURL).to.equal('https://shopify.com/octocat');
+          expect(profile.profileURL).to.equal(
+            'https://shopify.com/octocat');
           done();
         });
       });
@@ -136,7 +146,6 @@ describe('ShopifyStrategy', () => {
   });
 
   describe('strategy when loading user profile from custom URL', () => {
-
     let strategy;
     beforeEach((done) => {
       strategy = new ShopifyStrategy({
@@ -145,7 +154,8 @@ describe('ShopifyStrategy', () => {
         profileURL: 'https://shopify.corpDomain/api/v3/user',
       }, () => {});
 
-      let body = `{ "shop": { "name": "octocat", "id": 1,
+      const body =
+        `{ "shop": { "name": "octocat", "id": 1,
         "shop_owner": "monalisa octocat", "email": "octocat@shopify.com",
         "domain": "https://shopify.com/octocat" } }`;
 
@@ -162,10 +172,9 @@ describe('ShopifyStrategy', () => {
     afterEach(() => nock.cleanAll());
 
     describe('when told to load user profile', () => {
-
       it('should not throw an error', (done) => {
-        strategy.userProfile('access-token', (err, profile) => {
-          expect(err).to.be.null;
+        strategy.userProfile('access-token', (err) => {
+          expect(err).to.be.null();
           done();
         });
       });
@@ -175,10 +184,13 @@ describe('ShopifyStrategy', () => {
           expect(profile.provider).to.equal('shopify');
           expect(profile.id).to.equal(1);
           expect(profile.username).to.equal('octocat');
-          expect(profile.displayName).to.equal('monalisa octocat');
+          expect(profile.displayName).to.equal(
+            'monalisa octocat');
           expect(profile.emails).to.have.lengthOf(1);
-          expect(profile.emails[0].value).to.equal('octocat@shopify.com');
-          expect(profile.profileURL).to.equal('https://shopify.com/octocat');
+          expect(profile.emails[0].value).to.equal(
+            'octocat@shopify.com');
+          expect(profile.profileURL).to.equal(
+            'https://shopify.com/octocat');
           done();
         });
       });
@@ -200,17 +212,12 @@ describe('ShopifyStrategy', () => {
   });
 
   describe('strategy when loading user profile and encountering an error', () => {
-
     let strategy;
     beforeEach((done) => {
       strategy = new ShopifyStrategy({
-          clientID: 'ABC123',
-          clientSecret: 'secret',
-        }, () => {});
-
-      let body = `{ "shop": { "name": "octocat", "id": 1,
-        "shop_owner": "monalisa octocat", "email": "octocat@shopify.com",
-        "domain": "https://shopify.com/octocat" } }`;
+        clientID: 'ABC123',
+        clientSecret: 'secret',
+      }, () => {});
 
       nock('https://example.myshopify.com')
         .get('/admin/shop.json')
@@ -225,17 +232,17 @@ describe('ShopifyStrategy', () => {
     afterEach(() => nock.cleanAll());
 
     describe('when told to load user profile', () => {
-
       it('should error', (done) => {
-        strategy.userProfile('access-token', (err, profile) => {
-          expect(err).to.exist;
+        strategy.userProfile('access-token', (err) => {
+          expect(err).to.exist();
           done();
         });
       });
 
       it('should wrap error in InternalOAuthError', (done) => {
-        strategy.userProfile('access-token', (err, profile) => {
-          expect(err).to.be.an.instanceof(InternalOAuthError);
+        strategy.userProfile('access-token', (err) => {
+          expect(err).to.be.an.instanceof(
+            InternalOAuthError);
           done();
         });
       });

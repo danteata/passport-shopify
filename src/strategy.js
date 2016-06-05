@@ -1,9 +1,14 @@
 /*
  * Module dependencies.
  */
-import { InternalOAuthError, Strategy as OAuth2Strategy } from 'passport-oauth2';
-import { isUndefined, defaults } from 'lodash';
-import assert from 'assert';
+import {
+  InternalOAuthError, Strategy as OAuth2Strategy,
+}
+from 'passport-oauth2';
+import {
+  isUndefined, defaults,
+}
+from 'lodash';
 
 const SHOP_NAME_PATTERN = /^[a-z0-9-_]+$/i;
 
@@ -12,17 +17,14 @@ const SHOP_NAME_PATTERN = /^[a-z0-9-_]+$/i;
  */
 class Strategy extends OAuth2Strategy {
 
-  constructor(options, verify) {
-
-    options = options || {};
-
-    if (isUndefined(options.shop)) {
-      options.shop = 'example';
-    }
+  constructor(options = {}, verify) {
+    defaults(options, {
+      shop: 'example',
+    });
 
     let shopName;
     if (options.shop.match(SHOP_NAME_PATTERN)) {
-      shopName =  `${options.shop}.myshopify.com`;
+      shopName = `${options.shop}.myshopify.com`;
     } else {
       shopName = options.shop;
     }
@@ -33,11 +35,12 @@ class Strategy extends OAuth2Strategy {
       profileURL: `https://${shopName}/admin/shop.json`,
       userAgent: 'passport-shopify',
       customHeaders: {},
-      scopeSeparator: ','
+      scopeSeparator: ',',
     });
 
-    defaults(options.customHeaders,
-      { 'User-Agent': options.userAgent });
+    defaults(options.customHeaders, {
+      'User-Agent': options.userAgent,
+    });
 
     super(options, verify);
     this.name = 'shopify';
@@ -49,23 +52,24 @@ class Strategy extends OAuth2Strategy {
   }
 
   userProfile(accessToken, done) {
-
-    this._oauth2.get(this._profileURL, accessToken,
-      (err, body, res) => {
-
+    this._oauth2.get(this._profileURL, accessToken, (err, body) => {
       if (err) {
         return done(
           new InternalOAuthError('Failed to fetch user profile', err));
       }
 
       try {
-        let json = JSON.parse(body);
-        let profile = { provider: 'shopify' };
+        const json = JSON.parse(body);
+        const profile = {
+          provider: 'shopify',
+        };
         profile.id = json.shop.id;
         profile.displayName = json.shop.shop_owner;
         profile.username = json.shop.name;
         profile.profileURL = json.shop.domain;
-        profile.emails = [{ value: json.shop.email }];
+        profile.emails = [{
+          value: json.shop.email,
+        }];
         profile._raw = body;
         profile._json = json;
         return done(null, profile);
@@ -76,16 +80,16 @@ class Strategy extends OAuth2Strategy {
   }
 
   authenticate(req, options) {
-
     // If shop is defined
     // with authentication
     if (!isUndefined(options.shop)) {
-
-      let shopName = this.normalizeShopName(options.shop);
+      const shopName = this.normalizeShopName(options.shop);
 
       // update _oauth2 settings
-      this._oauth2._authorizeUrl = `https://${shopName}/admin/oauth/authorize`;
-      this._oauth2._accessTokenUrl = `https://${shopName}/admin/oauth/access_token`;
+      this._oauth2._authorizeUrl =
+        `https://${shopName}/admin/oauth/authorize`;
+      this._oauth2._accessTokenUrl =
+        `https://${shopName}/admin/oauth/access_token`;
       this._profileURL = `https://${shopName}/admin/shop.json`;
     }
 
@@ -94,12 +98,11 @@ class Strategy extends OAuth2Strategy {
   }
 
   normalizeShopName(shop) {
-
     if (shop.match(SHOP_NAME_PATTERN)) {
       return `${shop}.myshopify.com`;
-    } else {
-      return shop;
     }
+
+    return shop;
   }
 }
 

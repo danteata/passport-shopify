@@ -1,10 +1,15 @@
 import shopify from '../src';
-import { expect } from 'chai';
+
+import {
+  expect,
+}
+from 'chai';
 
 describe('passport-shopify', () => {
   describe('module', () => {
     it('should report a version', () => {
-      expect(shopify.version).to.be.a.String;
+      /* eslint-disable no-unused-expressions */
+      expect(shopify.version).to.be.String;
     });
   });
 });

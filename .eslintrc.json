@@ -1,0 +1,10 @@
+{
+  "extends": "airbnb",
+  "env": {
+    "node": true,
+    "mocha": true
+  },
+  "rules": {
+    "no-underscore-dangle": "off"
+  }
+}

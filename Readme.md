@@ -1,4 +1,9 @@
-# Passport-Shopify [![NPM version](https://badge.fury.io/js/passport-shopify.png)](http://badge.fury.io/js/passport-shopify)
+# Passport-Shopify
+
+[![NPM Version](https://img.shields.io/npm/v/passport-shopify.svg)](https://www.npmjs.com/package/passport-shopify)
+[![Build Status](https://img.shields.io/travis/danteata/passport-shopify/master.svg)](https://travis-ci.org/danteata/passport-shopify)
+[![Coverage Status](https://img.shields.io/codecov/c/github/danteata/passport-shopify/master.svg)](https://coveralls.io/github/danteata/passport-shoify)
+
 
 [Passport](http://passportjs.org/) strategy for authenticating with
 [Shopify](https://shopify.com/) using the OAuth 2.0 API.
