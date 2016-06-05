@@ -10,7 +10,7 @@ import {
 }
 from 'lodash';
 
-const SHOP_NAME_PATTERN = /^[a-z0-9-_]+$/i;
+const SHOP_NAME_SLUG = /^[a-z0-9-_]+$/i;
 
 /*
  * Inherit `Strategy` from `OAuth2Strategy`.
@@ -23,7 +23,7 @@ class Strategy extends OAuth2Strategy {
     });
 
     let shopName;
-    if (options.shop.match(SHOP_NAME_PATTERN)) {
+    if (options.shop.match(SHOP_NAME_SLUG)) {
       shopName = `${options.shop}.myshopify.com`;
     } else {
       shopName = options.shop;
@@ -98,7 +98,7 @@ class Strategy extends OAuth2Strategy {
   }
 
   normalizeShopName(shop) {
-    if (shop.match(SHOP_NAME_PATTERN)) {
+    if (shop.match(SHOP_NAME_SLUG)) {
       return `${shop}.myshopify.com`;
     }
 

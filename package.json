@@ -21,7 +21,7 @@
     "chai": "^3.5.0",
     "dirty-chai": "^1.2.2",
     "express": "*",
-    "eslint": "^2.9.0",
+    "eslint": "^2.11.1",
     "eslint-config-airbnb": "^8.0.0",
     "eslint-plugin-import": "^1.6.1",
     "eslint-plugin-jsx-a11y": "^1.0.4",
@@ -39,10 +39,9 @@
     "passport": "*"
   },
   "scripts": {
-    "lint": "eslint ./**/*.js",
-    "pretest": "npm run lint",
+    "lint": "gulp lint",
+    "coverage": "gulp istanbul && rm -rf coverage",
     "test": "gulp test",
-    "posttest": "gulp istanbul && rm -rf coverage",
     "prepublish": "gulp build"
   },
   "keywords": [
@@ -57,19 +56,15 @@
     "name": "Daniel Abakah",
     "email": "dan.abakah@gmail.com"
   },
-  "contributors": [
-    {
-      "name": "Nick Baugh",
-      "email": "niftylettuce@gmail.com"
-    },
-    {
-      "name": "Igor Goltsov",
-      "email": "riversy@gmail.com"
-    },
-    {
-      "name": "Sebastian Iacomuzzi",
-      "email": "sebastian.iacomuzzi@gmail.com"
-    }
-  ],
+  "contributors": [{
+    "name": "Nick Baugh",
+    "email": "niftylettuce@gmail.com"
+  }, {
+    "name": "Igor Goltsov",
+    "email": "riversy@gmail.com"
+  }, {
+    "name": "Sebastian Iacomuzzi",
+    "email": "sebastian.iacomuzzi@gmail.com"
+  }],
   "license": "MIT"
 }

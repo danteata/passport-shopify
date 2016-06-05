@@ -1,13 +1,13 @@
 /*
- * Module dependencies.
- */
-
-/*
  * Framework version.
  */
-require('pkginfo')(module, 'version');
-
+import pkginfo from 'pkginfo';
+pkginfo(module, 'version');
+export const version = module.exports.version;
 /*
  * Expose constructors.
  */
-export { default } from './strategy';
+export {
+  default,
+}
+from './strategy';

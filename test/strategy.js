@@ -109,14 +109,15 @@ describe('ShopifyStrategy', () => {
 
     describe('when told to load user profile', () => {
       it('should not throw an error', (done) => {
-        strategy.userProfile('access-token', (err) => {
-          expect(err).to.be.null();
-          done();
-        });
+        strategy.userProfile('access-token', done);
       });
 
       it('should load profile', (done) => {
         strategy.userProfile('access-token', (err, profile) => {
+          if (err) {
+            return done(err);
+          }
+
           expect(profile.provider).to.equal('shopify');
           expect(profile.id).to.equal(1);
           expect(profile.username).to.equal('octocat');
@@ -125,21 +126,29 @@ describe('ShopifyStrategy', () => {
           expect(profile.emails).to.have.lengthOf(1);
           expect(profile.profileURL).to.equal(
             'https://shopify.com/octocat');
-          done();
+          return done();
         });
       });
 
       it('should set raw property', (done) => {
         strategy.userProfile('access-token', (err, profile) => {
-          expect(profile._raw).to.be.String;
-          done();
+          if (err) {
+            return done(err);
+          }
+
+          expect(profile._raw).to.be.a('string');
+          return done();
         });
       });
 
       it('should set json property', (done) => {
         strategy.userProfile('access-token', (err, profile) => {
-          expect(profile._json).to.be.Object;
-          done();
+          if (err) {
+            return done(err);
+          }
+
+          expect(profile._json).to.be.instanceof(Object);
+          return done();
         });
       });
     });
@@ -173,14 +182,15 @@ describe('ShopifyStrategy', () => {
 
     describe('when told to load user profile', () => {
       it('should not throw an error', (done) => {
-        strategy.userProfile('access-token', (err) => {
-          expect(err).to.be.null();
-          done();
-        });
+        strategy.userProfile('access-token', done);
       });
 
       it('should load profile', (done) => {
         strategy.userProfile('access-token', (err, profile) => {
+          if (err) {
+            return done(err);
+          }
+
           expect(profile.provider).to.equal('shopify');
           expect(profile.id).to.equal(1);
           expect(profile.username).to.equal('octocat');
@@ -191,21 +201,29 @@ describe('ShopifyStrategy', () => {
             'octocat@shopify.com');
           expect(profile.profileURL).to.equal(
             'https://shopify.com/octocat');
-          done();
+          return done();
         });
       });
 
       it('should set raw property', (done) => {
         strategy.userProfile('access-token', (err, profile) => {
+          if (err) {
+            return done(err);
+          }
+
           expect(profile._raw).to.be.String;
-          done();
+          return done();
         });
       });
 
       it('should set json property', (done) => {
         strategy.userProfile('access-token', (err, profile) => {
+          if (err) {
+            return done(err);
+          }
+
           expect(profile._json).to.be.Object;
-          done();
+          return done();
         });
       });
     });
@@ -234,8 +252,8 @@ describe('ShopifyStrategy', () => {
     describe('when told to load user profile', () => {
       it('should error', (done) => {
         strategy.userProfile('access-token', (err) => {
-          expect(err).to.exist();
-          done();
+          expect(err).to.be.an.instanceof(Error);
+          return done();
         });
       });
 
@@ -243,14 +261,14 @@ describe('ShopifyStrategy', () => {
         strategy.userProfile('access-token', (err) => {
           expect(err).to.be.an.instanceof(
             InternalOAuthError);
-          done();
+          return done();
         });
       });
 
       it('should not load profile', (done) => {
         strategy.userProfile('access-token', (err, profile) => {
-          expect(profile).to.equal(undefined);
-          done();
+          expect(profile).to.be.an('undefined');
+          return done();
         });
       });
     });
