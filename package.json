@@ -12,7 +12,6 @@
   "main": "./lib/passport-shopify",
   "dependencies": {
     "lodash": "^3.10.1",
-    "passport-oauth": "1.x.x",
     "passport-oauth2": "^1.3.0",
     "pkginfo": "0.3.x"
   },

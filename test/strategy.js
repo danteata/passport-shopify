@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import ShopifyStrategy from '../src';
 import assert from 'assert';
 import nock from 'nock';
-import { InternalOAuthError } from 'passport-oauth';
+import { InternalOAuthError } from 'passport-oauth2';
 
 let count = 0;
 describe('ShopifyStrategy', () => {

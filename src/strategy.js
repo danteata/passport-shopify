@@ -1,8 +1,7 @@
 /*
  * Module dependencies.
  */
-import OAuth2Strategy from 'passport-oauth2';
-import { InternalOAuthError } from 'passport-oauth';
+import { InternalOAuthError, Strategy as OAuth2Strategy } from 'passport-oauth2';
 import { isUndefined, defaults } from 'lodash';
 import assert from 'assert';
 
