@@ -2,8 +2,7 @@
 
 [![NPM Version](https://img.shields.io/npm/v/passport-shopify.svg)](https://www.npmjs.com/package/passport-shopify)
 [![Build Status](https://img.shields.io/travis/danteata/passport-shopify/master.svg)](https://travis-ci.org/danteata/passport-shopify)
-[![Coverage Status](https://img.shields.io/codecov/c/github/danteata/passport-shopify/master.svg)](https://coveralls.io/github/danteata/passport-shoify)
-
+[![Coverage Status](https://img.shields.io/codecov/c/github/danteata/passport-shopify/master.svg)](https://codecov.io/gh/danteata/passport-shopify/branch/master)
 
 [Passport](http://passportjs.org/) strategy for authenticating with
 [Shopify](https://shopify.com/) using the OAuth 2.0 API.
