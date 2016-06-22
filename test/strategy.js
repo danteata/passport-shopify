@@ -1,4 +1,7 @@
-import ShopifyStrategy from '../src';
+import {
+  Strategy as ShopifyStrategy,
+}
+from '../src';
 import nock from 'nock';
 import {
   InternalOAuthError,
