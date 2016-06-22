@@ -214,7 +214,7 @@ describe('ShopifyStrategy', () => {
             return done(err);
           }
 
-          expect(profile._raw).to.be.String;
+          expect(profile._raw).to.be.a('string');
           return done();
         });
       });
@@ -225,7 +225,7 @@ describe('ShopifyStrategy', () => {
             return done(err);
           }
 
-          expect(profile._json).to.be.Object;
+          expect(profile._json).to.be.an('object');
           return done();
         });
       });
