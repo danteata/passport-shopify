@@ -1,6 +1,6 @@
 {
   "name": "passport-shopify",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Shopify authentication strategy for passport",
   "repository": {
     "type": "git",
@@ -56,15 +56,19 @@
     "name": "Daniel Abakah",
     "email": "dan.abakah@gmail.com"
   },
-  "contributors": [{
-    "name": "Nick Baugh",
-    "email": "niftylettuce@gmail.com"
-  }, {
-    "name": "Igor Goltsov",
-    "email": "riversy@gmail.com"
-  }, {
-    "name": "Sebastian Iacomuzzi",
-    "email": "sebastian.iacomuzzi@gmail.com"
-  }],
+  "contributors": [
+    {
+      "name": "Nick Baugh",
+      "email": "niftylettuce@gmail.com"
+    },
+    {
+      "name": "Igor Goltsov",
+      "email": "riversy@gmail.com"
+    },
+    {
+      "name": "Sebastian Iacomuzzi",
+      "email": "sebastian.iacomuzzi@gmail.com"
+    }
+  ],
   "license": "MIT"
 }
