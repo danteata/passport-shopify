@@ -1,6 +1,6 @@
 {
   "name": "passport-shopify",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Shopify authentication strategy for passport",
   "repository": {
     "type": "git",
